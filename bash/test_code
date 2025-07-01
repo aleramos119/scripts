@@ -1,0 +1,5 @@
+#! /bin/bash
+
+pre-commit run -a mypy
+pre-commit run -a ruff
+pytest tests/
