@@ -1,0 +1,52 @@
+#! /home/ale/anaconda3/bin/python
+
+#%%
+
+import numpy as np
+import sys
+import matplotlib.pyplot as plt
+
+#%%
+args = sys.argv[1:]
+
+file = args[0]
+
+cols=list(map(int,args[1:]))
+
+#%%
+
+# print(file,cols)
+# file="/home/ale/Documents/Work/simulation_of_open_quantum_systems/tjm_noise_char/tests/yaqs_test/gp_time_test/UCB_time_error_vs_d.txt"
+# cols=[0,1]
+
+#%%
+
+
+
+data=np.genfromtxt(file,skip_header=1)
+
+with open(file, 'r') as f:
+    first_line = f.readline().strip()
+
+
+labels=first_line.split()
+
+
+if len(cols) == 1:
+    plt.plot(data[:,cols[0]],'o-')
+    plt.ylabel(labels[cols[0]])
+    plt.show()
+
+if len(cols) == 2:
+    plt.plot(data[:,cols[0]],data[:,cols[1]],'o-') 
+    plt.xlabel(labels[cols[0]])
+    plt.ylabel(labels[cols[1]])
+    plt.show()
+
+
+
+
+
+
+
+# %%
